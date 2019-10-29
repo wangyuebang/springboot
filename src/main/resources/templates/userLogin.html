@@ -1,16 +1,166 @@
 <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>用户登录</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <link rel="stylesheet" href="/nabble.css?v=29" type="text/css">
+        <link rel="stylesheet" href="/template/NamlServlet.jtp?macro=site_style" type="text/css">
+        <style type="text/css">
+            @media (max-width: 600px) {
+                #search-box,#topic-search-box{margin:1em 0}
+                td.pin-column img{display:none}
+            }
+        </style>
+        <script async="" src="https://www.google-analytics.com/analytics.js"></script><script src="/assets/jquery/jquery-1.9.1.min.js"></script>
+        <script>$.browser = {}</script>
+        <script src="/util/nabbledropdown-2.4.1.js" type="text/javascript"></script>
+        <script src="/template/NamlServlet.jtp?macro=javascript_library&amp;v=102" type="text/javascript"></script>
+        <meta name="robots" content="noindex,nofollow">
+        <title>Thymeleaf - User Forum - Login</title>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                if (Nabble.isEmbedded) {
+                    Nabble.resizeFrames('', 1);
+                }
+                $("#email").focus();
+            });
+        </script>
+        <script type="text/javascript">
+            var loginNextUrl = 'http://forum.thymeleaf.org/Thymeleaf-3-0-is-here-td4029676.html';
+        </script><style type="text/css">
+        input[type=text],input[type=password] {
+            padding:.4em 0;
+        }
+        div.field-title {
+            margin:.1em .3em 0 1.5em;
+            white-space:nowrap;
+            text-align:right;
+        }
+    </style>
+        <script type="text/javascript">
+            Nabble.setFontSize();
+
+        </script>
+        <script type="text/javascript">
+            if (Nabble.analytics) Nabble.analytics();
+        </script>
+        <!-- Start Google Analytics -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-91855-9', 'auto', 'nabble');
+            ga('nabble.send', 'pageview');
+        </script>
+        <!-- End Google Analytics -->
 </head>
 <body>
-请输入用户名与密码登录
-<form action="/user/userLogin" method="post">
-    用户名：<input type="text" name="username" /><br>
-    密&nbsp;&nbsp;&nbsp;码：<input type="password" name="password" /><br>
-    <input type="submit" value="登录" />
-    <a href="/user/registerpage" target="_blank">注册</a>
-</form>
+<!--    <div th:class="ui-corner-right" th:align="center">-->
+<!--        <form action="/user/userLogin" th:method="post">-->
+<!--            <div th:class="ui-corner-right">-->
+<!--                <table>-->
+<!--                    <tr>-->
+<!--                        <th>用户名</th>-->
+<!--                            <td><input th:type="text" th:name="username" th:title="请输入用户名"/></td>-->
+<!--                        <tr>-->
+<!--                            <th>密码</th>-->
+<!--                            <td><input th:type="password" th:name="password" th:title="请输入密码"/></td>-->
+<!--                        </tr>-->
+<!--                    <tr><td><input th:type="submit" th:value="提交" /></td></tr>-->
+<!--                &lt;!&ndash;        <a href="/user/registerpage" target="_blank">注册</a>&ndash;&gt;-->
+<!--        &lt;!&ndash;            <input th:type="hidden" th:name="id" th:value="${user == null? null : user.id}" />&ndash;&gt;-->
+<!--                    </tr>-->
+<!--                </table>-->
+<!--            </div>-->
+<!--        </form>-->
+<!--    </div>-->
+<div id="notice" class="notice rounded-bottom"></div>
+<div class="nabble macro_login_page" id="nabble">
+
+
+    <div class="top-bar">
+        <div class="breadcrumbs" style="float:left">
+			<span id="breadcrumbs" class="weak-color">
+
+				<a href="/">Thymeleaf - User Forum</a>
+	</span>
+        </div>
+        <div style="text-align:right;">
+            <span style="white-space:nowrap;" id="nabble-user-header"><a href="/template/NamlServlet.jtp?macro=login_page&amp;nextUrl=http%3A%2F%2Fforum.thymeleaf.org%2FThymeleaf-3-0-is-here-td4029676.html">登录</a>&nbsp;&nbsp;<a href="/template/NamlServlet.jtp?macro=start_registration_page&amp;nextUrl=http%3A%2F%2Fforum.thymeleaf.org%2FThymeleaf-3-0-is-here-td4029676.html">注册</a></span>
+            <script type="text/javascript">Nabble.userHeader();</script>
+        </div>
+    </div>
+    <h1 class="weak-color">登录界面</h1>
+
+    <div style="margin:.2em 0 1em">
+
+    </div>
+
+
+
+    <form method="POST" action="/template/NamlServlet.jtp?login_page" accept-charset="UTF-8">
+        <input type="hidden" name="macro" value="login_page">
+
+
+
+        <input type="hidden" id="nextUrl" name="nextUrl" value="http://forum.thymeleaf.org/Thymeleaf-3-0-is-here-td4029676.html">
+        <table>
+            <tbody><tr>
+                <td>
+                    <div class="second-font field-title">
+                        用户名
+                    </div>
+                </td>
+                <td><input id="email" name="email" size="40" type="text"> <div class="weak-color" style="display:inline;font-size:80%">示例: 马云</div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="second-font field-title">
+                        密码
+                    </div>
+                </td>
+                <td><input id="password" name="password" size="20" type="password"></td>
+            </tr>
+            <tr>
+                <td align="right" style="padding-right:.3em"><img src="../images/lock.png" width="30" height="46"></td>
+                <td>
+                    <input type="submit" value="登录">
+                    <div style="padding-top:.2em"><a href="/template/NamlServlet.jtp?macro=forgot_password_page">密码忘记了?</a></div>
+                </td>
+            </tr>
+            </tbody></table>
+    </form>
+    <div class="light-bg-color rounded" style="padding: .7em .5em;margin-top:1.4em">
+        <div class="second-font big-title">注册</div>
+        <div style="margin-top:.5em">
+            如果你还不是会员，现在就可以注册了。 <a href="/template/NamlServlet.jtp?macro=start_registration_page" rel="nofollow"><b>开始注册</b></a>.
+        </div>
+    </div>
+    <table class="footer-table shaded-bg-color">
+        <tbody><tr>
+            <td class="footer-left weak-color">
+                <a href="http://www.nabble.com/" target="_top">自由论坛</a>
+
+            </td>
+            <td class="footer-right">
+                <script>
+                    if( window.nbl_disableAdsLink && window.localStorage && !localStorage.nbl_noAds ) {
+                        document.write("<a href='javascript:localStorage.nbl_noAds=true;location.reload();'>"+nbl_disableAdsLink+"</a> | ");
+                    }
+                </script>
+                <a href="/template/NamlServlet.jtp?macro=macro_viewer&amp;id=login_page%21nabble%3Alogin.naml&amp;base=nabble.view.web.template.ServletNamespace" rel="nofollow">修改这个页面</a>
+            </td>
+        </tr>
+        </tbody></table>
+
+</div>
+<script src="/trk5.js" async="true"></script>
+<script src="/trk0.js" async="true"></script>
+<!-- n3.nabble.com | Site ID = 985082 -->
 </body>
 </html>

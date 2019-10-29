@@ -29,7 +29,7 @@ public class UserLoginController {
         user user = userLoginService.userLogin(username,password);
         if (user != null){
             request.getSession().setAttribute("session_user",user);     //将用户信息放入session
-            return "index";
+            return "loginSuccess";
         }
         return "loginError";
     }
