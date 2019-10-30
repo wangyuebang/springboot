@@ -33,4 +33,9 @@ public class UserLoginController {
         }
         return "loginError";
     }
+
+    @RequestMapping("/registerHtml")
+    public String register(){
+        return "register";
+    }
 }
