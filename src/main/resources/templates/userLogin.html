@@ -2,36 +2,60 @@
 <link lang="en" xmlns:th="http://www.thymeleaf.org">
     <link>
         <title>登陆界面</title>
-    <link rel="stylesheet" href="/statics/bootstrap-4.3.1-dist/css"></link>
+    <!-- 引入bootstrap -->
+    <!--              颜色参数  bg-light-->
+    <!--            <div class="form-group row justify-content-center" style="height: 50px">-->
+    <!--                <input class="form-check-label" type="checkbox">记住我-->
+    <!--                </input>-->
+    <!--            </div>-->
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     </head>
-    <body class="container">
-    <br/>
-    <h1>登陆</h1>
-    <br/><br/>
-    <div class="ui-widget-header">
-        <form  action="/user/userLogin" method="post">
-            <div class="form-select-button">
-                <label class="col-sm-2">用户名</label>
-                <div class="col-sm-12">
-                    <input  width="80%" type="text"  id="username" name="username">
-                </div>
-            </div>
-            <div class="form-select-button">
-                <label class="col-sm-2">密码</label>
-                <div class="col-sm-12">
-                    <input type="text"  id="password" name="password">
-                </div>
-            </div>
-            <div class="form-select-button">
-                <div class="col-sm-auto col-sm-10">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <img src="/statics/images/lock.png" width="30" height="46">
-                    <input class="btn btn-info" type="submit"  value="登陆">
-                </div>
-            </div>
-        </form>
-    </div>
+    <style>
+        .border {
+            display: inline-block;
+            width:  450px;
+            height: 20px;
+            margin: 6px;
+        }
+        span {
+            display: inline-block;
+            width: 70px;
+            height: 70px;
+            margin: 6px;
+        }
+    </style>
+        <div class="jumbotron justify-content-md-center">
+            <h1><a class="col-sm-6">
+                <img src="../static/lock.png"/></a>
+                登陆界面
+            </h1>
+        </div>
+    <body>
+        <div class="row justify-content-md-center " style="height: 50px">
+            <form action="/user/userLogin" method="post">
+                <span class="border border-bottom-0 rounded"></span>
+                     <div class="form-group">
+                        <label for="username">用户名:</label>
+                        <div>
+                            <input type="username" class="form-control"  id="username" name="username" placeholder="请输入用户名">
+                        </div>
+                     </div>
+                    <div class="form-group">
+                        <label for="password">密码:&nbsp;&nbsp;&nbsp;</label>
+                        <div>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码">
+                        </div>
+                    </div>
+                    <div class="form-group row justify-content-md-center">
+                        <button type="submit" class="btn btn-primary row" >登录</button>
+                    </div>
+                <span class="border border-top-0 rounded"></span>
+            </form>
+         </div>
     </body>
 </html>
+
 
 
