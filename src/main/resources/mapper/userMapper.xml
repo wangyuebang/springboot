@@ -2,9 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wyb.winter.mapper.userMapper">
 
+    <!--用户查询 -->
+    <select id="getList" parameterType="user" resultType="User">
+        SELECT * FROM user ORDER by id ASC
+    </select>
   <!--用户登录验证-->
   <select id="userlogin" parameterType="user" resultType="User">
-        SELECT id,username,password,phone,realname FROM user WHERE username = #{username} AND password = #{password}
+        SELECT id,username,password,phone,email FROM user WHERE username = #{username} AND password = #{password}
     </select>
+
+    <!--用户注册 -->
+    <insert id="adduser" parameterType="user" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user (username,password,phone,email) VALUES (#{username},#{password},#{phone},#{email})
+    </insert>
 
 </mapper>

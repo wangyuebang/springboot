@@ -6,7 +6,11 @@ public class user {
     private  String username;
     private  String password;
     private  String phone;
-    private  String realname;
+    private  String email;
+
+    public user(String email) {
+        this.email = email;
+    }
 
     public Integer getId() {
         return id;
@@ -40,11 +44,11 @@ public class user {
         this.phone = phone;
     }
 
-    public String getRealname() {
-        return realname;
+    public String getEmail() {
+        return email;
     }
 
-    public void setRealname(String realname) {
-        this.realname = realname;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
