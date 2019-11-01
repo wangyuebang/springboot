@@ -3,18 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <title>用户查询</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1>用户</h1>
-<form>
-    <table >
-        <tr th:each="u, State : ${userList}">
-            <td th:text="${u.username}"></td>
-            <td th:text="${u.password}"></td>
-            <td th:text="${u.phone}"></td>
-            <td th:text="${u.email}"></td>
-        </tr>
+<h1>用户列表</h1>
+<form action="/user/deleteUser" method="post">
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>用户名</th>
+                <th>密码</th>
+                <th>电话</th>
+                <th>邮件</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user:${userList}">
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.password}"></td>
+                <td th:text="${user.phone}"></td>
+                <td th:text="${user.email}"></td>
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#myUpdate">修改</button>
+                            <!-- 模态框 -->
+                            <div class="modal fade" id="myUpdate">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <!-- 模态框头部 -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">用户修改</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- 模态框主体 -->
+                                        <div class="modal-body">
+                                            模态框内容..
+                                        </div>
+                                        <!-- 模态框底部 -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#myDelete">删除</button>
+                        <div class="modal fade" id="myDelete">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <!-- 模态框头部 -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">用户删除</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <!-- 模态框主体 -->
+                                    <div class="modal-body">
+                                        模态框内容..
+                                    </div>
+                                    <!-- 模态框底部 -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
     </table>
+
 </form>
 </body>
 </html>

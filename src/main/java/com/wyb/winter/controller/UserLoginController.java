@@ -1,6 +1,6 @@
 package com.wyb.winter.controller;
 
-import com.wyb.winter.entity.user;
+import com.wyb.winter.entity.User;
 import com.wyb.winter.service.UserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +20,7 @@ public class UserLoginController {
     @Autowired
     private UserLoginService userLoginService;
 
-    //用户登录界面
+    //用户登录
     @RequestMapping("/loginHtml")
     public String loginHtml(){
         return "userLogin";
@@ -31,7 +31,7 @@ public class UserLoginController {
                             @RequestParam("password") String password,
                             HttpServletRequest request){
 
-        user user = userLoginService.userLogin(username,password);
+        User user = userLoginService.uLogin(username,password);
         if (user != null){
             request.getSession().setAttribute("session_user",user);     //将用户信息放入session
             return "loginSuccess";
@@ -39,32 +39,33 @@ public class UserLoginController {
         return "loginError";
     }
 
-    //用户注册页面
+    //用户注册
     @RequestMapping("/registerHtml")
     public String registerpage(){
         return "register";
     }
 
     @ResponseBody
-    @RequestMapping("/uregister")
-    public String addUser(@RequestParam("username") String username,
-                          @RequestParam("password") String password,
-                          @RequestParam("phone") String phone,
-                          @RequestParam("email") String email) {
-        int res = userLoginService.adduser(username, password, phone,email);
-        if(res == 0){
-            System.out.println("11111111111111111111111111111111111");
-            System.out.println("22222222222222222222222222222222222");
-            return "注册成功！";
-        }else{
-            return "注册失败！";
+    @RequestMapping("/userRegister")
+    public User addUser(User user) {
+         return userLoginService.aUser(user);
+    }
+
+    //用户删除
+    @RequestMapping("/deleteUser")
+    public String deleteUser(int id){
+        int result = userLoginService.dUser(id);
+        if (result > 1){
+            return "删除成功";
+        } else {
+            return "删除失败";
         }
     }
 
-    //查询页面
+    //查询
     @RequestMapping("/userQuery")
-    public String getuserList(HttpServletRequest request, Model model){
-        List<user> userList= userLoginService.getlist();
+    public String getuserList( Model model){
+        List<User> userList= userLoginService.gUser();
         model.addAttribute("userList",userList);
         return "userList";
     }

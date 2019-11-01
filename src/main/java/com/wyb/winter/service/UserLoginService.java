@@ -1,33 +1,43 @@
 package com.wyb.winter.service;
 
-import com.wyb.winter.entity.user;
-import com.wyb.winter.mapper.userMapper;
+import com.wyb.winter.entity.User;
+import com.wyb.winter.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @Service
 public class UserLoginService {
 
     @Autowired
-    private userMapper userMapper;
+    private UserMapper userMapper;
 
     //用户登录
-    public user userLogin(String username,String password){
-        user user = userMapper.userlogin(username,password);
+    public User uLogin(String username, String password){
+        User user = userMapper.userLogin(username,password);
         return user;
     }
 
     //注册新用户
-    public int adduser(String username, String password, String phone,String email){
-        return userMapper.adduser(username,password,phone,email);
+    public User aUser(User user){
+        userMapper.addUser(user);
+        return user;
     }
 
     //查询用户
-    public List<user> getlist(){
-        return userMapper.getList();
+    public List<User> gUser(){
+        return userMapper.getUser();
+    }
+
+    //通过id查询用户
+    public List<User> getUserById(int id){
+        return userMapper.getUserById(id);
+    }
+
+    //用户删除
+    public int dUser(int id){
+        return userMapper.deleteUser(id);
     }
 
 }
