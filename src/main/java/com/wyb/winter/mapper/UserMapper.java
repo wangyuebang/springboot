@@ -2,7 +2,6 @@ package com.wyb.winter.mapper;
 
 import com.wyb.winter.entity.User;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
