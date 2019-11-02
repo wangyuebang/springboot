@@ -20,7 +20,8 @@ public interface UserMapper {
     List<User> getUser();
 
     //单个用户查询
-   List<User> getUserById(int id);
+    List<User> getUserById(int id);
+
     //用户删除
     int deleteUser(int id);
 
