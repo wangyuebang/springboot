@@ -1,16 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>注册</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<form action="/user/userRegister" method="post">
-    用户名:<input type="username" name="username" /></br>
-    密码:<input type="password" name="password" /></br>
-    邮箱:<input type="email" name="email" /></br>
-    电话:<input type="phone" name="phone" /></br>
-    <input type="submit" value="注册">
+<form action="/user/uRegister" method="post">
+    <div class="form-group">
+        <label for="usr">用户名:</label>
+        <input name="username" class="form-control" id="usr">
+
+        <label for="pwd">密码:</label>
+        <input type="password" name="password" class="form-control" id="pwd">
+
+        <label for="email">邮箱:</label>
+        <input type="email" name="email" class="form-control" id="email">
+    </div>
+    <div class="form-group">
+        <label for="tel">手机号码:</label>
+        <input type="tel" name="phone" class="form-control" id="tel">
+    </div>
+     <input type="submit" value="注册"/>
 </form>
 </body>
-</html>

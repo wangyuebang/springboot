@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<link lang="en" xmlns:th="http://www.thymeleaf.org">
 <link>
 <title>登陆页面</title>
 <!-- 引入bootstrap 颜色参数  bg-light-->
 <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</head>
 <style>
     .border {
         display: inline-block;
@@ -23,7 +21,7 @@
     }
 </style>
 <div class="jumbotron justify-content-md-start bg-transparent">
-    <h2>SpringBoot@you</h2>
+    <h2>SpringBoot</h2>
     <div class="d-flex flex-row-reverse mb-3 bg-white">
         <a href="http://localhost:8080/user/registerHtml" class="btn btn-outline-primary">注册</a>
         <div class="p-2 bg-light"></div>
@@ -38,18 +36,17 @@
         <div class="form-group">
             <label for="username">用户名:</label>
             <div>
-                <input type="username" class="form-control" id="username" name="username" placeholder="请输入用户名">
+                <input class="form-control" id="username" name="username" placeholder="请输入用户名">
             </div>
-        </div>
-        <div class="form-group">
+
             <label for="password">密码:</label>
             <div>
-                <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码">
+                <input class="form-control" id="password" name="password" placeholder="请输入密码">
             </div>
         </div>
         <div class="form-group row justify-content-center">
                 <a class="col-sm-2">
-                    <img src="../static/lock.png"/>
+                    <img src="../static/lock.png" alt="密码锁"/>
                 </a>
                 <button type="submit" class="btn btn-primary row">登录</button>
         </div>
@@ -59,8 +56,6 @@
 
 </body>
 
-</html>
 <div class="container fixed-bottom">
     <div class="card-footer bg-white row justify-content-center">Welcome</div>
-</div>
 </div>

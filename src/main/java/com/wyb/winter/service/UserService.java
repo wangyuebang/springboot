@@ -2,27 +2,26 @@ package com.wyb.winter.service;
 
 import com.wyb.winter.entity.User;
 import com.wyb.winter.mapper.UserMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UserLoginService {
+public class UserService {
 
-    @Autowired
-    private UserMapper userMapper;
+    private final UserMapper userMapper;
+
+    public UserService(UserMapper userMapper) {
+        this.userMapper = userMapper;
+    }
 
     //用户登录
     public User uLogin(String username, String password){
-        User user = userMapper.userLogin(username,password);
-        return user;
+        return userMapper.userLogin(username,password);
     }
 
     //注册新用户
-    public User aUser(User user){
-        userMapper.addUser(user);
-        return user;
+    public int aUser(User user){ return userMapper.addUser(user);
     }
 
     //查询用户
@@ -39,5 +38,6 @@ public class UserLoginService {
     public int dUser(int id){
         return userMapper.deleteUser(id);
     }
+
 
 }

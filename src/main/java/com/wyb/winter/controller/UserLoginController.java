@@ -1,14 +1,13 @@
 package com.wyb.winter.controller;
 
 import com.wyb.winter.entity.User;
-import com.wyb.winter.service.UserLoginService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.wyb.winter.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -17,45 +16,52 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserLoginController {
 
-    @Autowired
-    private UserLoginService userLoginService;
+    private final UserService userService;
+
+    public UserLoginController(UserService userService) {
+        this.userService = userService;
+    }
 
     //用户登录
     @RequestMapping("/loginHtml")
-    public String loginHtml(){
+    public String loginHtml() {
         return "userLogin";
     }
 
-    @RequestMapping("/userLogin")
+    @RequestMapping(value = "/userLogin")
     public String userLogin(@RequestParam("username") String username,
                             @RequestParam("password") String password,
-                            HttpServletRequest request){
+                            HttpServletRequest request) {
 
-        User user = userLoginService.uLogin(username,password);
-        if (user != null){
-            request.getSession().setAttribute("session_user",user);     //将用户信息放入session
+        User user = userService.uLogin(username, password);
+        if (user != null) {
+            request.getSession().setAttribute("session_user", user);     //将用户信息放入session
             return "loginSuccess";
         }
         return "loginError";
     }
 
-    //用户注册
-    @RequestMapping("/registerHtml")
-    public String registerpage(){
+
+//    用户注册
+    @RequestMapping("registerHtml")
+    public String UserRegister(){
+        System.out.println("进入注册页面");
         return "register";
     }
 
     @ResponseBody
-    @RequestMapping("/userRegister")
-    public User addUser(User user) {
-         return userLoginService.aUser(user);
+    @RequestMapping(value = "/uRegister",method = RequestMethod.POST)
+    public String addUser(User user) {
+        userService.aUser(user);
+        return "registerSuccess";
     }
 
+
     //用户删除
-    @RequestMapping("/deleteUser")
-    public String deleteUser(int id){
-        int result = userLoginService.dUser(id);
-        if (result > 1){
+    @RequestMapping(value = "/deleteUser",method = RequestMethod.POST)
+    public String deleteUser(int id) {
+        int result = userService.dUser(id);
+        if (result > 1) {
             return "删除成功";
         } else {
             return "删除失败";
@@ -63,27 +69,10 @@ public class UserLoginController {
     }
 
     //查询
-    @RequestMapping("/userQuery")
-    public String getuserList( Model model){
-        List<User> userList= userLoginService.gUser();
-        model.addAttribute("userList",userList);
+    @RequestMapping(value = "/userQuery",method = RequestMethod.GET)
+    public String getUserList(Model model) {
+        List<User> userList = userService.gUser();
+        model.addAttribute("userList", userList);
         return "userList";
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
