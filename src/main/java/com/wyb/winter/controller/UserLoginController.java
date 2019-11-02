@@ -56,7 +56,6 @@ public class UserLoginController {
         return "registerSuccess";
     }
 
-
     //用户删除
     @RequestMapping(value = "/deleteUser",method = RequestMethod.POST)
     public String deleteUser(int id) {
