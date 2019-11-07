@@ -1,18 +1,20 @@
 package com.wyb.winter.entity;
 
+
+
 public class User {
 
-    private String id;
+    private  Integer  id;
     private  String username;
     private  String password;
     private  String phone;
     private  String email;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -51,12 +53,11 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "id='" + id + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }
-
 }

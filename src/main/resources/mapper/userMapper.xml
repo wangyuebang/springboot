@@ -3,29 +3,34 @@
 <mapper namespace="com.wyb.winter.mapper.UserMapper">
 
 
-    <!--用户登录验证-->
-    <select id="userLogin" parameterType="com.wyb.winter.entity.User" resultType="User">
+  <!--用户登录验证-->
+    <select id="userLogin" parameterType="User" resultType="User">
         SELECT id,username,password,phone,email FROM user WHERE username = #{username} AND password = #{password}
     </select>
 
     <!--用户注册 -->
-    <insert id="addUser" parameterType="com.wyb.winter.entity.User" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO user (username,password,phone,email) VALUES (#{username},#{password},#{phone},#{email})
+    <insert id="addUser" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user (id,username,password,phone,email) VALUES (#{id},#{username},#{password},#{phone},#{email})
     </insert>
 
     <!--用户查询 -->
-    <select id="getUser" parameterType="com.wyb.winter.entity.User" resultType="User"><![CDATA[
+    <select id="getUser" parameterType="User" resultType="User">
         SELECT * FROM user ORDER by id ASC
-    ]]></select>
+    </select>
 
-    <!--id查询用户 -->
-    <select id="getUserById" parameterType="int" resultType="User">
-        SELECT * from USER WHERE id = {#id}
+    <!--username查询用户 -->
+    <select id="getUserById" parameterType="User" resultType="User">
+        SELECT * from USER WHERE id = #{id}
     </select>
 
     <!--用户删除 -->
-    <select id="deleteUser" parameterType="int" resultType="User">
-        DELETE from USER WHERE id = {#id}
-    </select>
+    <delete id="deleteUser" parameterType="Integer">
+        DELETE from USER WHERE id = #{id}
+    </delete>
+
+    <!--用户修改 -->
+    <update id="updateUser" parameterType="User" >
+        UPDATE USER set password=#{password},phone=#{phone},email=#{email} WHERE username = #{username}
+    </update>
 
 </mapper>

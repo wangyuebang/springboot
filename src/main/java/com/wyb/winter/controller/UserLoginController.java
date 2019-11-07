@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -57,21 +58,37 @@ public class UserLoginController {
     }
 
     //用户删除
-    @RequestMapping(value = "/deleteUser",method = RequestMethod.POST)
-    public String deleteUser(int id) {
-        int result = userService.dUser(id);
-        if (result > 1) {
-            return "删除成功";
-        } else {
-            return "删除失败";
-        }
+    @RequestMapping("/deleteUser")
+    public ModelAndView deleteUser(Integer id){
+        ModelAndView mv = new ModelAndView("forward:/user/userQuery");
+        userService.dUser(id);
+       return mv;
     }
 
-    //查询
-    @RequestMapping(value = "/userQuery",method = RequestMethod.GET)
-    public String getUserList(Model model) {
-        List<User> userList = userService.gUser();
-        model.addAttribute("userList", userList);
+    //用户查询
+    @RequestMapping("/userQuery")
+    public String getuserList( Model model){
+        List<User> userList= userService.gUser();
+        model.addAttribute("userList",userList);
         return "userList";
     }
+
+    //用户修改
+    @RequestMapping("/findOneUser")
+    public String findUserByName(User user,Model model){
+        model.addAttribute("user",user);
+        System.out.println("*********************user:"+user);
+        return "upgradeUser";
+    }
+
+    @ResponseBody
+    @RequestMapping("/updateUser")
+    public ModelAndView updateUserList(User user,HttpServletRequest request){
+        ModelAndView mv = new ModelAndView("forward:/user/userQuery");
+        userService.uUser(user);
+        System.out.println("=============================" + user );
+        return mv;
+    }
+
+
 }

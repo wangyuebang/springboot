@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>用户查询</title>
@@ -14,65 +14,31 @@
     <table class="table table-hover">
         <thead class="thead-dark">
         <tr>
+            <th>序列号</th>
             <th>用户名</th>
             <th>密码</th>
             <th>电话</th>
             <th>邮件</th>
-            <th>操作</th>
+            <th>修改</th>
+            <th>删除</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="user : ${userList}">
-            <td th:text=" ${user.username} "></td>
-            <td th:text=" ${user.password} "></td>
-            <td th:text=" ${user.phone} "></td>
-            <td th:text=" ${user.email} "></td>
-            <td>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#myUpdate">修改</button>
-                    <!-- 模态框 -->
-                    <div class="modal fade" id="myUpdate">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <!-- 模态框头部 -->
-                                <div class="modal-header">
-                                    <h4 class="modal-title">用户修改</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-                                <!-- 模态框主体 -->
-                                <div class="modal-body">
-                                    模态框内容..
-                                </div>
-                                <!-- 模态框底部 -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#myDelete">删除</button>
-                    <div class="modal fade" id="myDelete">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <!-- 模态框头部 -->
-                                <div class="modal-header">
-                                    <h4 class="modal-title">用户删除</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-                                <!-- 模态框主体 -->
-                                <div class="modal-body">
-                                    模态框内容..
-                                </div>
-                                <!-- 模态框底部 -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </td>
-        </tr>
+            <tr th:each="user : ${userList}">
+                <td th:text=" ${user.id} " >1</td>
+                <td th:text=" ${user.username} ">neo</td>
+                <td th:text=" ${user.password} ">Otto</td>
+                <!--/*@thymesVar id="phone" type=""*/-->
+                <td th:text=" ${user.phone} ">15371663928</td>
+                <td th:text=" ${user.email} " id="email" th:type="email">153716545@qq.com</td>
+                <td>
+                    <!--/*@thymesVar id="id" type=""*/-->
+                    <a th:href="@{/user/findOneUser(id=${user.id})}">修改</a>
+                </td>
+                <td>
+                    <a th:href="@{/user/deleteUser(id=${user.id})}">删除</a>
+                </td>
+            </tr>
         </tbody>
     </table>
 </form>
