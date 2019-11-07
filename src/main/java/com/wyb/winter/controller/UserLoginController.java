@@ -29,17 +29,22 @@ public class UserLoginController {
         return "userLogin";
     }
 
-    @RequestMapping(value = "/userLogin")
-    public String userLogin(@RequestParam("username") String username,
-                            @RequestParam("password") String password,
-                            HttpServletRequest request) {
+    @RequestMapping("/loginError")
+    public String loginError() {
+        return "loginError";
+    }
 
+    @RequestMapping(value = "/userLogin")
+    public ModelAndView userLogin(String username, String password,
+                            HttpServletRequest request) {
+        ModelAndView mvok = new ModelAndView("forward:/user/userQuery");
+        ModelAndView mvno = new ModelAndView("forward:/user/loginError");
         User user = userService.uLogin(username, password);
         if (user != null) {
             request.getSession().setAttribute("session_user", user);     //将用户信息放入session
-            return "loginSuccess";
+            return mvok;
         }
-        return "loginError";
+        return mvno;
     }
 
 
@@ -51,10 +56,11 @@ public class UserLoginController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/uRegister",method = RequestMethod.POST)
-    public String addUser(User user) {
+    @RequestMapping("/userRegister")
+    public ModelAndView addUser(User user) {
+        ModelAndView mv = new ModelAndView("forward:/user/loginHtml");
         userService.aUser(user);
-        return "registerSuccess";
+        return mv;
     }
 
     //用户删除
@@ -75,7 +81,8 @@ public class UserLoginController {
 
     //用户修改
     @RequestMapping("/findOneUser")
-    public String findUserByName(User user,Model model){
+    public String findUserByName(int id,Model model){
+        User user = userService.gUserById(id);
         model.addAttribute("user",user);
         System.out.println("*********************user:"+user);
         return "upgradeUser";
@@ -83,7 +90,7 @@ public class UserLoginController {
 
     @ResponseBody
     @RequestMapping("/updateUser")
-    public ModelAndView updateUserList(User user,HttpServletRequest request){
+    public ModelAndView updateUserList(User user){
         ModelAndView mv = new ModelAndView("forward:/user/userQuery");
         userService.uUser(user);
         System.out.println("=============================" + user );

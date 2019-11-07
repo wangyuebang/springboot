@@ -4,33 +4,33 @@
 
 
   <!--用户登录验证-->
-    <select id="userLogin" parameterType="User" resultType="User">
+    <select id="userLogin" parameterType="User" resultType="User"><![CDATA[
         SELECT id,username,password,phone,email FROM user WHERE username = #{username} AND password = #{password}
-    </select>
+    ]]></select>
 
     <!--用户注册 -->
-    <insert id="addUser" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+    <insert id="addUser" parameterType="User" useGeneratedKeys="true" keyProperty="id"><![CDATA[
         INSERT INTO user (id,username,password,phone,email) VALUES (#{id},#{username},#{password},#{phone},#{email})
-    </insert>
+    ]]></insert>
 
     <!--用户查询 -->
-    <select id="getUser" parameterType="User" resultType="User">
+    <select id="getUser" parameterType="User" resultType="User"><![CDATA[
         SELECT * FROM user ORDER by id ASC
-    </select>
+    ]]></select>
 
-    <!--username查询用户 -->
-    <select id="getUserById" parameterType="User" resultType="User">
+    <!--id查询用户 -->
+    <select id="getUserById" parameterType="User" resultType="User"><![CDATA[
         SELECT * from USER WHERE id = #{id}
-    </select>
+    ]]></select>
 
     <!--用户删除 -->
-    <delete id="deleteUser" parameterType="Integer">
+    <delete id="deleteUser" parameterType="Integer"><![CDATA[
         DELETE from USER WHERE id = #{id}
-    </delete>
+    ]]></delete>
 
     <!--用户修改 -->
-    <update id="updateUser" parameterType="User" >
+    <update id="updateUser" parameterType="User" ><![CDATA[
         UPDATE USER set password=#{password},phone=#{phone},email=#{email} WHERE username = #{username}
-    </update>
+    ]]></update>
 
 </mapper>
