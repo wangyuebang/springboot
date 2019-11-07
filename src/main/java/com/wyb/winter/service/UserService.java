@@ -1,5 +1,6 @@
 package com.wyb.winter.service;
 
+
 import com.wyb.winter.entity.User;
 import com.wyb.winter.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +11,15 @@ import java.util.List;
 @Service
 public class UserService {
 
-    @Autowired
-    private UserMapper userMapper;
+    private final UserMapper userMapper;
+
+    public UserService(UserMapper userMapper) {
+        this.userMapper = userMapper;
+    }
 
     //用户登录
     public User uLogin(String username, String password){
-        User user = userMapper.userLogin(username,password);
-        return user;
+        return userMapper.userLogin(username, password);
     }
 
     //注册新用户
@@ -44,4 +47,6 @@ public class UserService {
     public int uUser (User user){
         return userMapper.updateUser(user);
     }
+
+
 }

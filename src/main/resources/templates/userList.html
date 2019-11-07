@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>用户查询</title>
@@ -42,13 +42,17 @@
         </tbody>
     </table>
 </form>
+<p>
+    当前<span th:text="${pageinfo.pageNum}"></span>页,总
+    <span th:text="${pageinfo.pages}"></span>页,共
+    <span th:text="${pageinfo.total}"></span>条记录
+</p>
 <div class="container row justify-content-center">
-    <ul class="pagination ">
-        <li class="page-item "><a class="page-link" href="#">上一页</a></li>
-        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-        <li class="page-item "><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">下一页</a></li>
+    <ul class="pagination">
+        <li class="page-item "><a class="page-link" th:href="@{/user/userQuery}" >第一页</a></li>
+        <li class="page-item active"><a class="page-link" th:href="@{/user/userQuery(pageNum=${pageinfo.hasPreviousPage}?${pageinfo.prePage}:1)}">上一页</a></li>
+        <li class="page-item "><a class="page-link" th:href="@{/user/userQuery(pageNum=${pageinfo.hasNextPage}?${pageinfo.nextPage}:${pageinfo.pages})}">下一页</a></li>
+        <li class="page-item"><a class="page-link" th:href="@{/user/userQuery(pageNum=${pageinfo.pages})}">最后一页</a></li>
     </ul>
 </div>
 </body>

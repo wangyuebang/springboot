@@ -1,5 +1,7 @@
 package com.wyb.winter.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.wyb.winter.entity.User;
 import com.wyb.winter.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -73,8 +75,15 @@ public class UserLoginController {
 
     //用户查询
     @RequestMapping("/userQuery")
-    public String getuserList( Model model){
+    public String getuserList( Model model,@RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum){
+        //查询之前调用startPage，就是每页显示多少条数据
+        PageHelper.startPage(pageNum,8);
+        //拿到所有用户数据
         List<User> userList= userService.gUser();
+        //将查询到的数据放入pagehepler中
+        PageInfo<User> pageinfo = new PageInfo<>(userList);
+        // 将查询到的数据存到返回
+        model.addAttribute("pageinfo",pageinfo);
         model.addAttribute("userList",userList);
         return "userList";
     }
@@ -96,6 +105,5 @@ public class UserLoginController {
         System.out.println("=============================" + user );
         return mv;
     }
-
 
 }
