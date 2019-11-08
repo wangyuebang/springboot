@@ -8,35 +8,41 @@
     <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="/webjars/popper.js/1.14.3/popper.min.js"></script>
 </head>
+<script>
+    //提示框8s内消失
+    window.setTimeout(function(){
+        $('[data-dismiss="alert"]').alert('close');
+    },8000);
+</script>
+<div id="alertShow" class="alert alert-success alert-dismissible fade show">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>登录成功!</strong>欢迎进入后台管理系统。
+</div>
 <body>
 <h1>用户列表</h1>
 <form action="/user/userQuery" method="post">
     <table class="table table-hover">
-        <thead class="thead-dark">
+        <thead class="table-info">
         <tr>
             <th>序列号</th>
             <th>用户名</th>
             <th>密码</th>
             <th>电话</th>
             <th>邮件</th>
-            <th>修改</th>
-            <th>删除</th>
+            <th>操作</th>
         </tr>
         </thead>
         <tbody>
             <tr th:each="user : ${userList}">
-                <td th:text=" ${user.id} " >1</td>
-                <td th:text=" ${user.username} ">neo</td>
-                <td th:text=" ${user.password} ">Otto</td>
+                <td th:text=" ${user.id} " ></td>
+                <td th:text=" ${user.username} "></td>
+                <td th:text=" ${user.password} "></td>
                 <!--/*@thymesVar id="phone" type=""*/-->
-                <td th:text=" ${user.phone} ">15371663928</td>
-                <td th:text=" ${user.email} " id="email" th:type="email">153716545@qq.com</td>
+                <td th:text=" ${user.phone} "></td>
+                <td th:text=" ${user.email} " id="email" th:type="email"></td>
                 <td>
-                    <!--/*@thymesVar id="id" type=""*/-->
-                    <a th:href="@{/user/findOneUser(id=${user.id})}">修改</a>
-                </td>
-                <td>
-                    <a th:href="@{/user/deleteUser(id=${user.id})}">删除</a>
+                    <a class="btn btn-outline-primary" role="button" th:href="@{/user/findOneUser(id=${user.id})}">修改</a>
+                    <a class="btn btn-outline-danger"  role="button"  th:href="@{/user/deleteUser(id=${user.id})}" onclick = ' return confirm("确认要删除吗？"); '>删除</a>
                 </td>
             </tr>
         </tbody>

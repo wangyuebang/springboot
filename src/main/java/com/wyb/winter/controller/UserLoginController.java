@@ -70,6 +70,7 @@ public class UserLoginController {
     public ModelAndView deleteUser(Integer id){
         ModelAndView mv = new ModelAndView("forward:/user/userQuery");
         userService.dUser(id);
+        System.out.println("删除消息走到这里成功");
        return mv;
     }
 
