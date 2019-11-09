@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>导航页面</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="/webjars/popper.js/1.14.3/popper.min.js"></script>
+</head>
+<script>
+    //提示框8s内消失
+    window.setTimeout(function(){
+        $('[data-dismiss="alert"]').alert('close');
+    },8000);
+</script>
+<div id="alertShow" class="alert alert-success alert-dismissible fade show">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>登录成功!</strong>欢迎进入后台管理系统。
+</div>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2" style="background-color:white;">
+            <nav class="navbar flex-column bg-dark navbar-dark">
+            <!-- Brand -->
+            <a class="navbar-brand" href="#">
+                <img src="../static/nonboss.png " alt="Non"/>
+            </a>
+            <!-- Links -->
+            <ul class="navbar-nav ">
+                <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="http://localhost:8080/user/userQuery">用户管理</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">订单管理</a>
+                </li>
+
+                <!-- Dropdown -->
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbardrop" data-toggle="dropdown">
+                        交易管理
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item " href="#">订单信息</a>
+                        <a class="dropdown-item " href="#">支付信息</a>
+                        <a class="dropdown-item " href="#">物流信息</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">订单管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">库存管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">门店管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">商城设置</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">运营管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">商品管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">财务管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">账号权限</a>
+                </li>
+                <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                <li class="nav-item"><a class="nav-link active" href=""></a></li>
+            </ul>
+        </nav>
+        </div>
+        <div class="col-sm-8" style="background-color:white;">
+            <div class="container mt-3">
+                <div class="media border p-2  border-right-0  border-left-0 ">
+                    <div class="media-body">
+                        <h4 class="float-right">韦爵爷</h4>
+                    </div>
+                    <img src="http://y1.ifengimg.com/news_spider/dci_2012/09/02fd0e486b8f9ae1ac4785b5d23dd18b.jpg" alt="John Wei" class="ml-4 mt-4 rounded-circle" style="width:60px;height: 60px">
+                </div>
+                <br>
+                <div class="container">
+                    <div class="card">
+                        <div class="card-body">Basic card</div>
+                    </div>
+                    <br>
+                    <div class="card bg-primary text-white">
+                        <div class="card-body">Primary card</div>
+                    </div>
+                    <br>
+                    <div class="card bg-success text-white">
+                        <div class="card-body">Success card</div>
+                    </div>
+                    <br>
+                    <div class="card bg-info text-white">
+                        <div class="card-body">Info card</div>
+                    </div>
+                    <br>
+                    <div class="card bg-warning text-white">
+                        <div class="card-body">Warning card</div>
+                    </div>
+                    <br>
+                    <div class="card bg-danger text-white">
+                        <div class="card-body">Danger card</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

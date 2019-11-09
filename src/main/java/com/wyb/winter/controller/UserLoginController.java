@@ -39,7 +39,7 @@ public class UserLoginController {
     @RequestMapping(value = "/userLogin")
     public ModelAndView userLogin(String username, String password,
                             HttpServletRequest request) {
-        ModelAndView mvok = new ModelAndView("forward:/user/userQuery");
+        ModelAndView mvok = new ModelAndView("forward:/NavigationHtml");
         ModelAndView mvno = new ModelAndView("forward:/user/loginError");
         User user = userService.uLogin(username, password);
         if (user != null) {

@@ -8,58 +8,135 @@
     <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="/webjars/popper.js/1.14.3/popper.min.js"></script>
 </head>
-<script>
-    //提示框8s内消失
-    window.setTimeout(function(){
-        $('[data-dismiss="alert"]').alert('close');
-    },8000);
-</script>
-<div id="alertShow" class="alert alert-success alert-dismissible fade show">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <strong>登录成功!</strong>欢迎进入后台管理系统。
-</div>
 <body>
-<h1>用户列表</h1>
-<form action="/user/userQuery" method="post">
-    <table class="table table-hover">
-        <thead class="table-info">
-        <tr>
-            <th>序列号</th>
-            <th>用户名</th>
-            <th>密码</th>
-            <th>电话</th>
-            <th>邮件</th>
-            <th>操作</th>
-        </tr>
-        </thead>
-        <tbody>
-            <tr th:each="user : ${userList}">
-                <td th:text=" ${user.id} " ></td>
-                <td th:text=" ${user.username} "></td>
-                <td th:text=" ${user.password} "></td>
-                <!--/*@thymesVar id="phone" type=""*/-->
-                <td th:text=" ${user.phone} "></td>
-                <td th:text=" ${user.email} " id="email" th:type="email"></td>
-                <td>
-                    <a class="btn btn-outline-primary" role="button" th:href="@{/user/findOneUser(id=${user.id})}">修改</a>
-                    <a class="btn btn-outline-danger"  role="button"  th:href="@{/user/deleteUser(id=${user.id})}" onclick = ' return confirm("确认要删除吗？"); '>删除</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</form>
-<p>
-    当前<span th:text="${pageinfo.pageNum}"></span>页,总
-    <span th:text="${pageinfo.pages}"></span>页,共
-    <span th:text="${pageinfo.total}"></span>条记录
-</p>
-<div class="container row justify-content-center">
-    <ul class="pagination">
-        <li class="page-item "><a class="page-link" th:href="@{/user/userQuery}" >第一页</a></li>
-        <li class="page-item active"><a class="page-link" th:href="@{/user/userQuery(pageNum=${pageinfo.hasPreviousPage}?${pageinfo.prePage}:1)}">上一页</a></li>
-        <li class="page-item "><a class="page-link" th:href="@{/user/userQuery(pageNum=${pageinfo.hasNextPage}?${pageinfo.nextPage}:${pageinfo.pages})}">下一页</a></li>
-        <li class="page-item"><a class="page-link" th:href="@{/user/userQuery(pageNum=${pageinfo.pages})}">最后一页</a></li>
-    </ul>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2" style="background-color:white;">
+            <nav class="navbar flex-column bg-dark navbar-dark">
+                <!-- Brand -->
+                <a class="navbar-brand" href="#">
+                    <img src="../static/nonboss.png " alt="Non"/>
+                </a>
+                <!-- Links -->
+                <ul class="navbar-nav ">
+                    <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                    <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                    <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                    <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                    <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="http://localhost:8080/user/userQuery">用户管理</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">订单管理</a>
+                    </li>
+
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle active" href="#" id="navbardrop" data-toggle="dropdown">
+                            交易管理
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item " href="#">订单信息</a>
+                            <a class="dropdown-item " href="#">支付信息</a>
+                            <a class="dropdown-item " href="#">物流信息</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">订单管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">库存管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">门店管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">商城设置</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">运营管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">商品管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">财务管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">账号权限</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                    <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                    <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                    <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                    <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                    <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                    <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                    <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                    <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                    <li class="nav-item"><a class="nav-link active" href=""></a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-sm-8" style="background-color:white;">
+            <div class="media border p-2  border-right-0  border-left-0 ">
+                <div class="media-body">
+                    <h4>用户列表</h4>
+                    <h4 class="float-right">韦爵爷</h4>
+                </div>
+                <img src="http://y1.ifengimg.com/news_spider/dci_2012/09/02fd0e486b8f9ae1ac4785b5d23dd18b.jpg" alt="John Wei" class="ml-4 mt-4 rounded-circle" style="width:60px;height: 60px">
+            </div>
+            <br/>
+            <form action="/user/userQuery" method="post">
+                <table class="table table-hover">
+                    <thead class="table-info">
+                    <tr>
+                        <th>序列号</th>
+                        <th>用户名</th>
+                        <th>密码</th>
+                        <th>电话</th>
+                        <th>邮件</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="user : ${userList}">
+                        <td th:text=" ${user.id} " ></td>
+                        <td th:text=" ${user.username} "></td>
+                        <td th:text=" ${user.password} "></td>
+                        <!--/*@thymesVar id="phone" type=""*/-->
+                        <td th:text=" ${user.phone} "></td>
+                        <td th:text=" ${user.email} " id="email" th:type="email"></td>
+                        <td>
+                            <a class="btn btn-outline-primary" role="button" th:href="@{/user/findOneUser(id=${user.id})}">修改</a>
+                            <a class="btn btn-outline-danger"  role="button"  th:href="@{/user/deleteUser(id=${user.id})}" onclick = ' return confirm("确认要删除吗？"); '>删除</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+            <p>
+                当前<span th:text="${pageinfo.pageNum}"></span>页,总
+                <span th:text="${pageinfo.pages}"></span>页,共
+                <span th:text="${pageinfo.total}"></span>条记录
+            </p>
+            <div class="container row justify-content-center">
+                <ul class="pagination">
+                    <li class="page-item "><a class="page-link" th:href="@{/user/userQuery}" >第一页</a></li>
+                    <li class="page-item active"><a class="page-link" th:href="@{/user/userQuery(pageNum=${pageinfo.hasPreviousPage}?${pageinfo.prePage}:1)}">上一页</a></li>
+                    <li class="page-item "><a class="page-link" th:href="@{/user/userQuery(pageNum=${pageinfo.hasNextPage}?${pageinfo.nextPage}:${pageinfo.pages})}">下一页</a></li>
+                    <li class="page-item"><a class="page-link" th:href="@{/user/userQuery(pageNum=${pageinfo.pages})}">最后一页</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
 </div>
+
+
+
+
+
 </body>
 </html>
