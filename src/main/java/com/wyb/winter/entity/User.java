@@ -1,7 +1,5 @@
 package com.wyb.winter.entity;
 
-
-
 public class User {
 
     private  Integer  id;
@@ -9,6 +7,15 @@ public class User {
     private  String password;
     private  String phone;
     private  String email;
+    private Commodity commodity;
+
+    public Commodity getCommodity() {
+        return commodity;
+    }
+
+    public void setCommodity(Commodity commodity) {
+        this.commodity = commodity;
+    }
 
     public Integer getId() {
         return id;
@@ -53,11 +60,12 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
+                ", commodity=" + commodity +
                 '}';
     }
 }

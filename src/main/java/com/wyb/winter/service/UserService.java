@@ -3,7 +3,6 @@ package com.wyb.winter.service;
 
 import com.wyb.winter.entity.User;
 import com.wyb.winter.mapper.UserMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
