@@ -6,6 +6,7 @@
     <resultMap id="userOrderMap" type="com.wyb.winter.entity.User">
         <id column="id" property="id"/>
         <result column="username" property="username"/>
+        <result column="phone" property="phone"/>
         <association property="commodity" javaType="com.wyb.winter.entity.Commodity">
             <id property="uid" column="uid"/>
             <result property="number" column="number"/>
@@ -14,8 +15,7 @@
     </resultMap>
 
     <select id="getUserOrder" resultMap="userOrderMap"><![CDATA[
-        SELECT u.username, c.CommodityName, c.number FROM user u, commodity c WHERE u.id = c.uid
+        SELECT u.username,u.phone, c.CommodityName, c.number FROM user u, commodity c WHERE u.id = c.uid
     ]]></select>
-
 
 </mapper>

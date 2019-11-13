@@ -8,6 +8,15 @@ public class User {
     private  String phone;
     private  String email;
     private Commodity commodity;
+    private Status status;
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 
     public Commodity getCommodity() {
         return commodity;
@@ -66,6 +75,7 @@ public class User {
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", commodity=" + commodity +
+                ", status=" + status +
                 '}';
     }
 }

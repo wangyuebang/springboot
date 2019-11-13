@@ -21,12 +21,13 @@
 <body>
 
 <div class="container-fluid">
+    <a href="http://localhost:8080/user/loginHtml" class="btn btn-dark float-right" role="button">注销</a>
     <div class="row">
         <div class="col-sm-2" style="background-color:white;">
-                <nav class="navbar flex-column bg-dark navbar-dark">
+            <nav class="navbar flex-column bg-dark navbar-dark">
                 <!-- Brand -->
                 <a class="navbar-brand" href="http://localhost:8080/NavigationHtml">
-                    <img src="../static/nonboss.png " alt="Non"/>
+                    <img src="../static/nonboss.png " alt="gaodingkeji"/>
                 </a>
                 <!-- Links -->
                 <ul class="navbar-nav ">
@@ -90,37 +91,43 @@
             </nav>
         </div>
         <div class="col-sm-8" style="background-color:white;">
-<!--            <a href="http://localhost:8080/loginHtml" class="btn btn-light float-right" role="button">注销</a>-->
             <div class="media border p-2  border-right-0  border-left-0 ">
-                <div class="media-body">
-                    <h4 class="float-right">韦爵爷</h4>
+                <a href="#demo" data-toggle="collapse">
+                    <img src="http://y1.ifengimg.com/news_spider/dci_2012/09/02fd0e486b8f9ae1ac4785b5d23dd18b.jpg"
+                         alt="John Wei" class="ml-4 mt-4 rounded-circle" style="width:60px;height: 60px">
+                </a>
+                <span class="badge badge-pill badge-info">信息</span>
+                <div id="demo" class="collapse">
+                    <dl>
+                        <dt>&nbsp;韦小宝</dt>
+                        <dd>金庸武侠小说《鹿鼎记》中的男主角。本是扬州人，其母韦春花是位妓女。一次偶然事件，韦小宝被江洋大盗茅十八带到北京，偶入皇宫，结识康熙帝，擒鳌拜，入天地会，拜天地会总舵主陈近南为师。赴五台山探望顺治帝，出家少林寺，解救顺治帝。后来身为赐婚使出使云南。平神龙岛，帮助索菲亚公主夺权。后因其天地会香主的身份被康熙帝发现出逃，通吃岛度过了几年。后来取得雅克萨之战大捷，签订尼布楚条约，最终携七个夫人归隐。</dd>
+                    </dl>
                 </div>
-                <img src="http://y1.ifengimg.com/news_spider/dci_2012/09/02fd0e486b8f9ae1ac4785b5d23dd18b.jpg" alt="John Wei" class="ml-4 mt-4 rounded-circle" style="width:60px;height: 60px">
             </div>
             <br>
             <div class="container">
                 <div class="card">
-                    <div class="card-body">Basic card</div>
+                    <div class="card-body">基本任务<span class="badge badge-dark float-right">中等（优先级）</span></div>
                 </div>
                 <br>
                 <div class="card bg-primary text-white">
-                    <div class="card-body">Primary card</div>
+                    <div class="card-body">初级任务<span class="badge badge-light float-right">低（优先级）</span></div>
                 </div>
                 <br>
                 <div class="card bg-success text-white">
-                    <div class="card-body">Success card</div>
+                    <div class="card-body">完成任务<span class="badge badge-light float-right">无（优先级）</span></div>
                 </div>
                 <br>
                 <div class="card bg-info text-white">
-                    <div class="card-body">Info card</div>
+                    <div class="card-body">任务信息<span class="badge badge-light float-right">无（优先级）</span></div>
                 </div>
                 <br>
                 <div class="card bg-warning text-white">
-                    <div class="card-body">Warning card</div>
+                    <div class="card-body">警告信息<span class="badge badge-light float-right">高（优先级）</span></div>
                 </div>
                 <br>
                 <div class="card bg-danger text-white">
-                    <div class="card-body">Danger card</div>
+                    <div class="card-body">危险信息<span class="badge badge-light float-right">紧急（优先级）</span></div>
                 </div>
             </div>
         </div>

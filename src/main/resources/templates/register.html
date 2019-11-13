@@ -8,12 +8,13 @@
 </head>
 <body>
 <div class="container-fluid">
+    <a href="http://localhost:8080/user/loginHtml" class="btn btn-dark float-right" role="button">注销</a>
     <div class="row">
         <div class="col-sm-2" style="background-color:white;">
             <nav class="navbar flex-column bg-dark navbar-dark">
                 <!-- Brand -->
-                <a class="navbar-brand" href="#">
-                    <img src="../static/nonboss.png " alt="Non"/>
+                <a class="navbar-brand" href="http://localhost:8080/NavigationHtml">
+                    <img src="../static/nonboss.png " alt="gaodingkeji"/>
                 </a>
                 <!-- Links -->
                 <ul class="navbar-nav ">
@@ -78,11 +79,17 @@
         </div>
         <div class="col-sm-8" style="background-color:white;">
             <div class="media border p-2  border-right-0  border-left-0 ">
-                <div class="media-body">
-                    <h4>注册</h4>
-                    <h4 class="float-right">韦爵爷</h4>
+                <a href="#demo" data-toggle="collapse">
+                    <img src="http://y1.ifengimg.com/news_spider/dci_2012/09/02fd0e486b8f9ae1ac4785b5d23dd18b.jpg"
+                         alt="John Wei" class="ml-4 mt-4 rounded-circle" style="width:60px;height: 60px">
+                </a>
+                <span class="badge badge-pill badge-info">信息</span>
+                <div id="demo" class="collapse">
+                    <dl>
+                        <dt>&nbsp;韦小宝</dt>
+                        <dd>金庸武侠小说《鹿鼎记》中的男主角。本是扬州人，其母韦春花是位妓女。一次偶然事件，韦小宝被江洋大盗茅十八带到北京，偶入皇宫，结识康熙帝，擒鳌拜，入天地会，拜天地会总舵主陈近南为师。赴五台山探望顺治帝，出家少林寺，解救顺治帝。后来身为赐婚使出使云南。平神龙岛，帮助索菲亚公主夺权。后因其天地会香主的身份被康熙帝发现出逃，通吃岛度过了几年。后来取得雅克萨之战大捷，签订尼布楚条约，最终携七个夫人归隐。</dd>
+                    </dl>
                 </div>
-                <img src="http://y1.ifengimg.com/news_spider/dci_2012/09/02fd0e486b8f9ae1ac4785b5d23dd18b.jpg" alt="John Wei" class="ml-4 mt-4 rounded-circle" style="width:60px;height: 60px">
             </div>
             <form action="/user/userRegister" class="mx-auto bg-light" style="width:400px" method="post">
                 <div class="form-group">
