@@ -7,6 +7,7 @@ public class User {
     private  String password;
     private  String phone;
     private  String email;
+    private Integer uid;
     private Commodity commodity;
     private Status status;
 
@@ -24,6 +25,14 @@ public class User {
 
     public void setCommodity(Commodity commodity) {
         this.commodity = commodity;
+    }
+
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
     }
 
     public Integer getId() {
@@ -74,6 +83,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
+                ", uid=" + uid +
                 ", commodity=" + commodity +
                 ", status=" + status +
                 '}';

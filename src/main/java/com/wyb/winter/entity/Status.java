@@ -3,8 +3,8 @@ package com.wyb.winter.entity;
 public class Status {
 
     private Integer sid;
-    private Integer statusInfo;
-    private Integer uid;
+    private Integer status;
+    private Integer cid;
 
     public Integer getSid() {
         return sid;
@@ -14,28 +14,28 @@ public class Status {
         this.sid = sid;
     }
 
-    public Integer getStatusInfo() {
-        return statusInfo;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setStatusInfo(Integer statusInfo) {
-        this.statusInfo = statusInfo;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
-    public Integer getUid() {
-        return uid;
+    public Integer getCid() {
+        return cid;
     }
 
-    public void setUid(Integer uid) {
-        this.uid = uid;
+    public void setCid(Integer cid) {
+        this.cid = cid;
     }
 
     @Override
     public String toString() {
         return "Status{" +
                 "sid=" + sid +
-                ", statusInfo=" + statusInfo +
-                ", uid=" + uid +
+                ", status=" + status +
+                ", cid=" + cid +
                 '}';
     }
 }

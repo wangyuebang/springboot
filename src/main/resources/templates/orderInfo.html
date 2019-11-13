@@ -101,7 +101,7 @@
                         <th>用户名</th>
                         <th>电话</th>
                         <th>购买产品</th>
-                        <th>购买数量</th>
+                        <th>产品属性</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -109,7 +109,7 @@
                         <td th:text="${orderList['username'] } "></td>
                         <td th:text="${orderList['phone'] } "></td>
                         <td th:text="${orderList['commodity'].commodityName } "></td>
-                        <td th:text="${orderList['commodity'].number } "></td>
+                        <td th:text="${orderList['commodity'].attribute } "></td>
                     </tr>
                     </tbody>
                 </table>

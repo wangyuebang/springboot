@@ -3,9 +3,10 @@ package com.wyb.winter.entity;
 public class Commodity {
 
     private Integer cid;
-    private Integer number;
+    private String attribute;
     private String CommodityName;
     private Integer uid;
+    private Integer sid;
 
     public Integer getCid() {
         return cid;
@@ -15,12 +16,12 @@ public class Commodity {
         this.cid = cid;
     }
 
-    public Integer getNumber() {
-        return number;
+    public String getAttribute() {
+        return attribute;
     }
 
-    public void setNumber(Integer number) {
-        this.number = number;
+    public void setAttribute(String attribute) {
+        this.attribute = attribute;
     }
 
     public String getCommodityName() {
@@ -39,13 +40,22 @@ public class Commodity {
         this.uid = uid;
     }
 
+    public Integer getSid() {
+        return sid;
+    }
+
+    public void setSid(Integer sid) {
+        this.sid = sid;
+    }
+
     @Override
     public String toString() {
         return "Commodity{" +
                 "cid=" + cid +
-                ", number=" + number +
+                ", attribute='" + attribute + '\'' +
                 ", CommodityName='" + CommodityName + '\'' +
                 ", uid=" + uid +
+                ", sid=" + sid +
                 '}';
     }
 }

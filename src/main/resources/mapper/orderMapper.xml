@@ -9,13 +9,13 @@
         <result column="phone" property="phone"/>
         <association property="commodity" javaType="com.wyb.winter.entity.Commodity">
             <id property="uid" column="uid"/>
-            <result property="number" column="number"/>
+            <result property="attribute" column="attribute"/>
             <result property="CommodityName" column="CommodityName"/>
         </association>
     </resultMap>
 
     <select id="getUserOrder" resultMap="userOrderMap"><![CDATA[
-        SELECT u.username,u.phone, c.CommodityName, c.number FROM user u, commodity c WHERE u.id = c.uid
+        SELECT u.username,u.phone, c.CommodityName, c.attribute FROM user u, commodity c WHERE u.id = c.uid
     ]]></select>
 
 </mapper>
