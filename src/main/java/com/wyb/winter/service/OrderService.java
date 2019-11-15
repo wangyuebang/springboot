@@ -1,6 +1,6 @@
 package com.wyb.winter.service;
 
-import com.wyb.winter.entity.Commodity;
+import com.wyb.winter.entity.Trolley;
 import com.wyb.winter.mapper.OrderMapper;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +15,19 @@ public class OrderService {
         this.orderMapper = orderMapper;
     }
 
-    public List<Commodity> gUserCommodity(){
+    //查询所有订单
+    public List<Trolley> gUserOrder(){
         return orderMapper.getUserOrder();
     }
+
+    //查询单个订单
+    public List<Trolley> gOneOrder(int id){
+        return orderMapper.getOrderOne(id);
+    }
+
+//    //修改单个订单
+//     public int uOrder(Trolley trolley){
+//        return orderMapper.updateOrder(trolley);
+//    }
 
 }

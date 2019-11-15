@@ -79,7 +79,7 @@
                 </ul>
             </nav>
         </div>
-        <div class="col-sm-8" style="background-color:white;">
+        <div class="col-sm-10" style="background-color:white;">
             <div class="container mt-3">
                 <div class="media border p-2  border-right-0  border-left-0 ">
                     <a href="#demo" data-toggle="collapse">
@@ -97,21 +97,40 @@
                 <br>
                 <table class="table table-bordered">
                     <thead>
-                    <tr>
-                        <th>用户名</th>
-                        <th>电话</th>
-                        <th>购买产品</th>
-                        <th>产品属性</th>
-                    </tr>
+                        <tr>
+                            <th>收件人</th>
+                            <th>收件人电话</th>
+                            <th>购买产品</th>
+                            <th>产品属性</th>
+                            <th>下单金额</th>
+                            <th>快递信息</th>
+                            <th>下单状况</th>
+                            <th>下单时间</th>
+                            <th>派送时间</th>
+                            <th>操作</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="orderList : ${orderList} ">
-                        <td th:text="${orderList['username'] } "></td>
-                        <td th:text="${orderList['phone'] } "></td>
-                        <td th:text="${orderList['commodity'].commodityName } "></td>
-                        <td th:text="${orderList['commodity'].attribute } "></td>
-                    </tr>
-                    </tbody>
+                         <tr th:each="orderList : ${orderList} ">
+                             <td th:text=" ${orderList['username'] } "></td>
+                             <td th:text=" ${orderList['phone'] } "></td>
+                             <td th:text=" ${orderList['commodity'].CommodityName } "></td>
+                             <td th:text=" ${orderList['commodity'].attribute } "></td>
+                             <td th:text=" ${orderList['trolley'].amount } "></td>
+                             <td th:if=" ${orderList['trolley'].express} == 0 " th:text="已派送"></td>
+                             <td th:if=" ${orderList['trolley'].express == 1} " th:text="已派送"></td>
+                             <td th:if=" ${orderList['trolley'].express == 2} " th:text="派送成功"></td>
+                             <td th:if=" ${orderList['trolley'].status == 0 } " th:text="未下单"></td>
+                             <td th:if=" ${orderList['trolley'].status == 1 } " th:text="已下单"></td>
+                             <td th:if=" ${orderList['trolley'].status == 2 } " th:text="订单已取消"></td>
+                             <td th:text=" ${#dates.format(orderList['trolley'].orderDate, 'yyyy/MM/dd HH:mm') }"></td>
+                             <td th:text=" ${#dates.format(orderList['trolley'].deliveryTime, 'yyyy/MM/dd HH:mm') }"></td>
+                             <td>
+                                 <a class="btn btn-outline-primary" role="button" th:href="@{/order/findOneOrder(id=1)} ">修改</a>
+                                 <a class="btn btn-outline-danger"  role="button" >删除</a>
+                             </td>
+                         </tr>
+                     </tbody>
                 </table>
                 <p>
                     当前<span th:text="${pageinfo.pageNum}"></span>页,总

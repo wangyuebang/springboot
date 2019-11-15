@@ -1,5 +1,6 @@
 package com.wyb.winter.entity;
 
+
 public class User {
 
     private  Integer  id;
@@ -9,31 +10,7 @@ public class User {
     private  String email;
     private Integer uid;
     private Commodity commodity;
-    private Status status;
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
-    public Commodity getCommodity() {
-        return commodity;
-    }
-
-    public void setCommodity(Commodity commodity) {
-        this.commodity = commodity;
-    }
-
-    public Integer getUid() {
-        return uid;
-    }
-
-    public void setUid(Integer uid) {
-        this.uid = uid;
-    }
+    private Trolley trolley;
 
     public Integer getId() {
         return id;
@@ -75,6 +52,30 @@ public class User {
         this.email = email;
     }
 
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
+    }
+
+    public Commodity getCommodity() {
+        return commodity;
+    }
+
+    public void setCommodity(Commodity commodity) {
+        this.commodity = commodity;
+    }
+
+    public Trolley getTrolley() {
+        return trolley;
+    }
+
+    public void setTrolley(Trolley trolley) {
+        this.trolley = trolley;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -85,7 +86,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", uid=" + uid +
                 ", commodity=" + commodity +
-                ", status=" + status +
+                ", trolley=" + trolley +
                 '}';
     }
 }

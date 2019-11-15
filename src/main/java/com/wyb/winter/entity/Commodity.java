@@ -6,7 +6,6 @@ public class Commodity {
     private String attribute;
     private String CommodityName;
     private Integer uid;
-    private Integer sid;
 
     public Integer getCid() {
         return cid;
@@ -40,14 +39,6 @@ public class Commodity {
         this.uid = uid;
     }
 
-    public Integer getSid() {
-        return sid;
-    }
-
-    public void setSid(Integer sid) {
-        this.sid = sid;
-    }
-
     @Override
     public String toString() {
         return "Commodity{" +
@@ -55,7 +46,6 @@ public class Commodity {
                 ", attribute='" + attribute + '\'' +
                 ", CommodityName='" + CommodityName + '\'' +
                 ", uid=" + uid +
-                ", sid=" + sid +
                 '}';
     }
 }

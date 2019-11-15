@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>订单修改</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="/webjars/popper.js/1.14.3/popper.min.js"></script>
+</head>
+<body>
+   <form action="/order/updateOrder"   method="post" class="mx-auto bg-light" style="width:400px ">
+       <div class="form-group "  th:each="OneOrder : ${OneOrder}">
+           <label>收件人：</label>
+           <input class="form-control" type="username" name="username" th:value=" ${OneOrder['username']} "/>
+
+           <label>电话：</label>
+           <input class="form-control" type="phone" name="phone" th:value=" ${OneOrder['phone']} "/>
+
+           <label for="sel">产品名：</label>
+           <select class="form-control" id="sel">
+               <option th:value=" ${OneOrder['commodity'].CommodityName } ">青龙偃月刀</option>
+               <option th:value=" ${OneOrder['commodity'].CommodityName } ">玉女剑法</option>
+               <option th:value=" ${OneOrder['commodity'].CommodityName } ">辟邪剑谱</option>
+               <option th:value=" ${OneOrder['commodity'].CommodityName } ">吸星大法</option>
+               <option th:value=" ${OneOrder['commodity'].CommodityName } ">北冥神功</option>
+           </select>
+
+           <label for="sel2">产品属性：</label>
+           <select class="form-control" id="sel2">
+               <option th:value=" ${OneOrder['commodity'].CommodityName } ">刀法</option>
+               <option th:value=" ${OneOrder['commodity'].CommodityName } ">剑气</option>
+               <option th:value=" ${OneOrder['commodity'].CommodityName } ">妖法</option>
+               <option th:value=" ${OneOrder['commodity'].CommodityName } ">内力</option>
+               <option th:value=" ${OneOrder['commodity'].CommodityName } ">功法</option>
+           </select>
+
+           <label>下单金额：</label>
+           <input class="form-control" type="amount" name="amount" th:value=" ${OneOrder['trolley'].amount } "/>
+
+           <label for="sel3">下单状况：</label>
+           <select class="form-control" id="sel3">
+               <option th:value=" ${OneOrder['trolley'].status == 0 } ">未下单</option>
+               <option th:value=" ${OneOrder['trolley'].status == 1 } ">已下单</option>
+               <option th:value=" ${OneOrder['trolley'].status == 2 } ">订单已取消</option>
+           </select>
+
+           <label for="sel4">快递信息：</label>
+           <select class="form-control" id="sel4">
+               <option th:value=" ${OneOrder['trolley'].express == 0 } ">已发货</option>
+               <option th:value=" ${OneOrder['trolley'].express == 1} ">已派送</option>
+               <option th:value=" ${OneOrder['trolley'].express == 2 } ">派送成功</option>
+           </select>
+
+<!--需要加在对应的时间控件           <label>下单时间：</label>-->
+<!--           <input class="form-control" type="amount" name="amount" th:value=" ${OneOrder['trolley'].orderDate } "/>-->
+
+<!--           <label>派送时间：</label>-->
+<!--           <input class="form-control" type="amount" name="amount" th:value=" ${OneOrder['trolley'].deliveryTime } "/>-->
+       </div>
+       <div class="form-group row justify-content-center">
+           <input type="submit" role="button" class="btn btn-outline-primary" value="提交"/>
+       </div>
+   </form>
+</body>
