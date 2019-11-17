@@ -38,4 +38,9 @@ public class OrderManagerController {
         System.out.println("单个订单√√√√√√√√√√√√√√√√√√√√√√√√"+OneOrder);
         return "updateOrder";
     }
+
+    @RequestMapping("updateOrder")
+    public String updateOrder(){
+        return null;
+    }
 }

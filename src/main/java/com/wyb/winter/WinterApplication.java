@@ -24,15 +24,6 @@ public class WinterApplication {
         SpringApplication.run(WinterApplication.class, args);
     }
 
-    //官方示例
-    /*    @Bean
-     public ServletWebServerFactory serverFactory(){
-        TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
-        tomcat.addAdditionalTomcatConnectors();
-        return tomcat;
-    }
-    */
-
     @Bean
     public TomcatServletWebServerFactory tomcatServletWebServerFactory(){
         TomcatServletWebServerFactory factory = new TomcatServletWebServerFactory(){
