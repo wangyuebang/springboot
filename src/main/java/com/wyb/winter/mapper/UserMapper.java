@@ -26,6 +26,6 @@ public interface UserMapper {
     int  deleteUser(Integer id);
 
     //用户修改
-    int  updateUser(User user);
+    int updateUser(User user);
 
 }

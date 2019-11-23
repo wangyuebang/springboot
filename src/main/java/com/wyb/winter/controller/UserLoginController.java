@@ -7,7 +7,6 @@ import com.wyb.winter.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -91,19 +90,18 @@ public class UserLoginController {
 
     //用户修改
     @RequestMapping("/findOneUser")
-    public String findUserByName(int id,Model model){
-        User user = userService.gUserById(id);
-        model.addAttribute("user",user);
-        System.out.println("*********************user:"+user);
+    public String findUserByName(Integer id,Model model){
+        User OneUser = userService.gUserById(id);
+        model.addAttribute("OneUser",OneUser);
+        System.out.println("*********************user:"+OneUser);
         return "upgradeUser";
     }
 
-    @ResponseBody
     @RequestMapping("/updateUser")
     public ModelAndView updateUserList(User user){
         ModelAndView mv = new ModelAndView("forward:/user/userQuery");
         userService.uUser(user);
-        System.out.println("=============================" + user );
+        System.out.println("user是：" + user );
         return mv;
     }
 

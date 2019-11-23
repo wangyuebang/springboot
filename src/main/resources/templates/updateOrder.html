@@ -100,81 +100,24 @@
             </div>
             <br>
             <form action="/order/updateOrder"   method="post" class="bg-light" style="width:400px ">
-                <div class="form-check-input container-fluid"  th:each="OneOrder : ${OneOrder}" >
-                    <div class="row ">
-                        <div class="col  " style="background-color:lavender;">
+                <div class="form-check-input container-fluid" th:each="OneOrder : ${OneOrder}">
+                    <div class="row col-sm-6  ">
+                        <div class="col" style="background-color:lavender;">
+                            <input type="hidden" class="form-control" name="uid" th:value=" ${OneOrder['uid']} "/>
+                            <input type="hidden" class="form-control" name="tuid" th:value=" ${OneOrder['trolley'].tuid } "/>
+
                             <label>&nbsp;&nbsp;收件人：</label>
-                            <input class="form-control"  name="username" th:value=" ${OneOrder['username']} "/>
+                            <input class="form-control" name="username" th:value=" ${OneOrder['username']} "/>
 
                             <label>&nbsp;&nbsp;电话：</label>
-                            <input class="form-control"  name="phone" th:value=" ${OneOrder['phone']} "/>
+                            <input class="form-control" name="phone" th:value=" ${OneOrder['phone']} "/>
 
-                            <label for="sel">&nbsp;&nbsp;产品名：</label>
-                            <select class="form-control" id="sel">
-                                <option th:value=" ${OneOrder['commodity'].CommodityName } ">青龙偃月刀</option>
-                                <option th:value=" ${OneOrder['commodity'].CommodityName } ">玉女剑法</option>
-                                <option th:value=" ${OneOrder['commodity'].CommodityName } ">辟邪剑谱</option>
-                                <option th:value=" ${OneOrder['commodity'].CommodityName } ">吸星大法</option>
-                                <option th:value=" ${OneOrder['commodity'].CommodityName } ">北冥神功</option>
-                            </select>
-
-                            <label for="sel2">&nbsp;&nbsp;产品属性：</label>
-                            <select class="form-control" id="sel2">
-                                <option th:value=" ${OneOrder['commodity'].CommodityName } ">刀法</option>
-                                <option th:value=" ${OneOrder['commodity'].CommodityName } ">剑气</option>
-                                <option th:value=" ${OneOrder['commodity'].CommodityName } ">妖法</option>
-                                <option th:value=" ${OneOrder['commodity'].CommodityName } ">内力</option>
-                                <option th:value=" ${OneOrder['commodity'].CommodityName } ">功法</option>
-                            </select>
-                        </div>
-                        <div class="col  " style="background-color:lavender;">
-                            <label>下单金额：</label>
-                            <input class="form-control"  name="amount" th:value=" ${OneOrder['trolley'].amount } "/>
-
-                            <label for="sel3">下单状况：</label>
-                            <select class="form-control" id="sel3">
-                                <option th:value=" ${OneOrder['trolley'].status == 0 } ">未下单</option>
-                                <option th:value=" ${OneOrder['trolley'].status == 1 } ">已下单</option>
-                                <option th:value=" ${OneOrder['trolley'].status == 2 } ">订单已取消</option>
-                            </select>
-
-                            <label for="sel4">快递信息：</label>
-                            <select class="form-control" id="sel4">
-                                <option th:value=" ${OneOrder['trolley'].express == 0 } ">已发货</option>
-                                <option th:value=" ${OneOrder['trolley'].express == 1} ">已派送</option>
-                                <option th:value=" ${OneOrder['trolley'].express == 2 } ">派送成功</option>
-                            </select>
-
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>下单时间：</label>
-                                            <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                                                <input type="text" class="form-control datetimepicker-input" th:value=" ${#dates.format(OneOrder['trolley'].orderDate, 'dd/MM/yyyy HH:mm') } " data-target="#datetimepicker1"/>
-                                                <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-                                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>派送时间：</label>
-                                            <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-                                                <input type="text" class="form-control datetimepicker-input" th:value=" ${#dates.format(OneOrder['trolley'].deliveryTime, 'dd/MM/yyyy HH:mm') } " data-target="#datetimepicker2"/>
-                                                <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
-                                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <label>金额：</label>
+                            <input class="form-control" name="amount" th:value=" ${OneOrder['trolley'].amount } "/>
                         </div>
                     </div>
                     <br/>
-                    <div class="form-group row justify-content-center">
+                    <div class="form-group row">
                         <input type="submit" role="button" class="btn btn-outline-primary" value="提交"/>
                     </div>
                 </div>
@@ -184,9 +127,12 @@
 </div>
 
 </body>
-<script type="text/javascript">
-    $(function () {
-        $('#datetimepicker1').datetimpicker();
-        $('#datetimepicker2').datetimpicker();
-    });
+<script type="text/javascript" th:inline="javascript">
+    // $(function () {
+    //     $('#datetimepicker1').datetimpicker();
+    //     $('#datetimepicker2').datetimpicker();
+    // });
+    /*<![CDATA[*/
+
+    /*]]>*/
 </script>

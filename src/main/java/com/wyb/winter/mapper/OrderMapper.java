@@ -19,6 +19,6 @@ public interface OrderMapper {
     List<Trolley> getOrderOne(int id);
 
     //修改单个订单
-//    int  updateOrder(Trolley trolley);
+    int updateTrolley(Trolley trolley);
 
 }

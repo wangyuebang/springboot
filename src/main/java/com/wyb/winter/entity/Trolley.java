@@ -9,8 +9,8 @@ public class Trolley {
     private Integer express;
     private Integer amount;
     private Integer status;
-    private Date orderDate;
-    private Date deliveryTime;
+    private Date order_date;
+    private Date delivery_time;
     private Integer tuid;
 
     public Integer getTid() {
@@ -45,20 +45,20 @@ public class Trolley {
         this.status = status;
     }
 
-    public Date getOrderDate() {
-        return orderDate;
+    public Date getOrder_date() {
+        return order_date;
     }
 
-    public void setOrderDate(Date orderDate) {
-        this.orderDate = orderDate;
+    public void setOrder_date(Date order_date) {
+        this.order_date = order_date;
     }
 
-    public Date getDeliveryTime() {
-        return deliveryTime;
+    public Date getDelivery_time() {
+        return delivery_time;
     }
 
-    public void setDeliveryTime(Date deliveryTime) {
-        this.deliveryTime = deliveryTime;
+    public void setDelivery_time(Date delivery_time) {
+        this.delivery_time = delivery_time;
     }
 
     public Integer getTuid() {
@@ -76,8 +76,8 @@ public class Trolley {
                 ", express=" + express +
                 ", amount=" + amount +
                 ", status=" + status +
-                ", orderDate=" + orderDate +
-                ", deliveryTime=" + deliveryTime +
+                ", order_date=" + order_date +
+                ", delivery_time=" + delivery_time +
                 ", tuid=" + tuid +
                 '}';
     }

@@ -13,24 +13,29 @@
         INSERT INTO user (id,username,password,phone,email) VALUES (#{id},#{username},#{password},#{phone},#{email})
     ]]></insert>
 
-    <!--用户查询 -->
+    <!--用户逻辑查询 -->
     <select id="getUser" parameterType="User" resultType="User"><![CDATA[
-        SELECT * FROM user ORDER by id ASC
+         SELECT * FROM user  WHERE deleted = 0 ORDER by id ASC
     ]]></select>
 
     <!--id查询用户 -->
     <select id="getUserById" parameterType="User" resultType="User"><![CDATA[
-        SELECT * from USER WHERE id = #{id}
+        SELECT * FROM user WHERE id = #{id}
     ]]></select>
 
-    <!--用户删除 -->
+    <!--用户逻辑删除 DELETE FROM user WHERE id = #{id}-->
     <delete id="deleteUser" parameterType="Integer"><![CDATA[
-        DELETE from USER WHERE id = #{id}
+        UPDATE user set deleted = 1 WHERE id = #{id}
     ]]></delete>
 
     <!--用户修改 -->
     <update id="updateUser" parameterType="User" ><![CDATA[
-        UPDATE USER set password=#{password},phone=#{phone},email=#{email} WHERE username = #{username}
+        UPDATE
+            user
+        SET
+            username=#{username},password=#{password}, phone=#{phone}, email=#{email}
+        WHERE
+            uid = #{uid}
     ]]></update>
 
 </mapper>

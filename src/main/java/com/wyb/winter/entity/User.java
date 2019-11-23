@@ -11,6 +11,7 @@ public class User {
     private Integer uid;
     private Commodity commodity;
     private Trolley trolley;
+    private String deleted;
 
     public Integer getId() {
         return id;
@@ -76,6 +77,14 @@ public class User {
         this.trolley = trolley;
     }
 
+    public String getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(String deleted) {
+        this.deleted = deleted;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -87,6 +96,7 @@ public class User {
                 ", uid=" + uid +
                 ", commodity=" + commodity +
                 ", trolley=" + trolley +
+                ", deleted='" + deleted + '\'' +
                 '}';
     }
 }

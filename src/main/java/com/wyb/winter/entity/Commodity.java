@@ -4,8 +4,9 @@ public class Commodity {
 
     private Integer cid;
     private String attribute;
-    private String CommodityName;
+    private String cname;
     private Integer uid;
+    private Integer tuid;
 
     public Integer getCid() {
         return cid;
@@ -23,12 +24,12 @@ public class Commodity {
         this.attribute = attribute;
     }
 
-    public String getCommodityName() {
-        return CommodityName;
+    public String getCname() {
+        return cname;
     }
 
-    public void setCommodityName(String commodityName) {
-        CommodityName = commodityName;
+    public void setCname(String cname) {
+        this.cname = cname;
     }
 
     public Integer getUid() {
@@ -39,13 +40,22 @@ public class Commodity {
         this.uid = uid;
     }
 
+    public Integer getTuid() {
+        return tuid;
+    }
+
+    public void setTuid(Integer tuid) {
+        this.tuid = tuid;
+    }
+
     @Override
     public String toString() {
         return "Commodity{" +
                 "cid=" + cid +
                 ", attribute='" + attribute + '\'' +
-                ", CommodityName='" + CommodityName + '\'' +
+                ", cname='" + cname + '\'' +
                 ", uid=" + uid +
+                ", tuid=" + tuid +
                 '}';
     }
 }

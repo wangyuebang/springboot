@@ -115,8 +115,8 @@
                             <td th:text=" ${user.phone} "></td>
                             <td th:text=" ${user.email} " id="email" th:type="email"></td>
                             <td>
-                                <a class="btn btn-outline-primary" role="button" th:href="@{/user/findOneUser(id=${user.id})}">修改</a>
-                                <a class="btn btn-outline-danger"  role="button"  th:href="@{/user/deleteUser(id=${user.id})}" onclick = ' return confirm("确认要删除吗？"); '>删除</a>
+                                <a class="btn btn-outline-primary" role="button" th:href=" @{/user/findOneUser(id=${user.uid})} ">修改</a>
+                                <a class="btn btn-outline-danger"  role="button"  th:href=" @{/user/deleteUser(id=${user.id})} " onclick = ' return confirm("确认要删除吗？"); '>删除</a>
                             </td>
                         </tr>
                     </tbody>

@@ -25,9 +25,9 @@ public class OrderService {
         return orderMapper.getOrderOne(id);
     }
 
-//    //修改单个订单
-//     public int uOrder(Trolley trolley){
-//        return orderMapper.updateOrder(trolley);
-//    }
+    //修改单个订单
+     public int uTrolley(Trolley trolley){
+         return orderMapper.updateTrolley(trolley);
+     }
 
 }
