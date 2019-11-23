@@ -101,8 +101,8 @@
             <br>
             <form action="/order/updateOrder"   method="post" class="bg-light" style="width:400px ">
                 <div class="form-check-input container-fluid" th:each="OneOrder : ${OneOrder}">
-                    <div class="row col-sm-6  ">
-                        <div class="col" style="background-color:lavender;">
+                    <div class="form-group row ">
+                        <div class="col col-sm-6" style="background-color:lavender;">
                             <input type="hidden" class="form-control" name="uid" th:value=" ${OneOrder['uid']} "/>
                             <input type="hidden" class="form-control" name="tuid" th:value=" ${OneOrder['trolley'].tuid } "/>
 
@@ -115,9 +115,30 @@
                             <label>金额：</label>
                             <input class="form-control" name="amount" th:value=" ${OneOrder['trolley'].amount } "/>
                         </div>
+                        <div class="col col-sm-6" style="background-color:lavender;">
+                            <label>下单时间：</label>
+                            <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                                <input name="order_date" type="text" class="form-control datetimepicker-input"
+                                       th:value=" ${#dates.format(OneOrder['trolley'].order_date, 'dd/MM/yyyy HH:mm') } "
+                                       data-target="#datetimepicker1"/>
+                                <div class="input-group-append" data-target="#datetimepicker1"data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+
+                            <label>派送时间：</label>
+                            <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                                <input name="delivery_time" type="text" class="form-control datetimepicker-input"
+                                       th:value=" ${#dates.format(OneOrder['trolley'].delivery_time, 'dd/MM/yyyy HH:mm') } "
+                                       data-target="#datetimepicker2"/>
+                                <div class="input-group-append" data-target="#datetimepicker2"data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <br/>
-                    <div class="form-group row">
+                    <div class="form-group row justify-content-lg-center">
                         <input type="submit" role="button" class="btn btn-outline-primary" value="提交"/>
                     </div>
                 </div>
@@ -128,10 +149,10 @@
 
 </body>
 <script type="text/javascript" th:inline="javascript">
-    // $(function () {
-    //     $('#datetimepicker1').datetimpicker();
-    //     $('#datetimepicker2').datetimpicker();
-    // });
+    $(function () {
+        // $('#datetimepicker1');
+
+    });
     /*<![CDATA[*/
 
     /*]]>*/

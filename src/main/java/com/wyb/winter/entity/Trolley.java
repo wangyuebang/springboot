@@ -6,9 +6,7 @@ import java.util.Date;
 public class Trolley {
 
     private Integer tid;
-    private Integer express;
     private Integer amount;
-    private Integer status;
     private Date order_date;
     private Date delivery_time;
     private Integer tuid;
@@ -21,28 +19,12 @@ public class Trolley {
         this.tid = tid;
     }
 
-    public Integer getExpress() {
-        return express;
-    }
-
-    public void setExpress(Integer express) {
-        this.express = express;
-    }
-
     public Integer getAmount() {
         return amount;
     }
 
     public void setAmount(Integer amount) {
         this.amount = amount;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
     }
 
     public Date getOrder_date() {
@@ -73,9 +55,7 @@ public class Trolley {
     public String toString() {
         return "Trolley{" +
                 "tid=" + tid +
-                ", express=" + express +
                 ", amount=" + amount +
-                ", status=" + status +
                 ", order_date=" + order_date +
                 ", delivery_time=" + delivery_time +
                 ", tuid=" + tuid +

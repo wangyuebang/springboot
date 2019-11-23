@@ -16,11 +16,8 @@
         </association>
         <association property="trolley" javaType="Trolley">
             <id property="tid" column="tid"/>
-            <result property="express" column="express"/>
             <result property="tuid" column="tuid"/>
-            <result property="express" column="express"/>
             <result property="amount" column="amount"/>
-            <result property="status" column="status"/>
             <result property="order_date" column="order_date"/>
             <result property="delivery_time" column="delivery_time"/>
         </association>
@@ -31,7 +28,7 @@
          SELECT
              u.username, u.phone,
              c.cname, c.attribute,
-             t.express, t.amount, t.status, t.order_date, t.delivery_time, t.tuid
+             t.amount, t.order_date, t.delivery_time, t.tuid
          FROM
             user u, commodity c, trolley t
          WHERE u.uid = c.uid AND c.tuid = t.tuid
@@ -41,7 +38,7 @@
     <select id="getOrderOne" resultMap="orderMap"><![CDATA[
         SELECT
             u.username, u.phone, u.uid,
-            t.amount, t.tuid
+            t.amount, t.tuid, t.order_date, t.delivery_time
         FROM
             user u,
             trolley t
@@ -49,9 +46,14 @@
             u.uid = t.tuid AND uid = #{uid}
    ]]> </select>
 
-    <!--订单修改-->
+    <!--订单金额修改-->
     <update id="updateTrolley" parameterType="Trolley" ><![CDATA[
-        UPDATE trolley set amount=#{amount} WHERE tuid = #{tuid}
+        UPDATE trolley set amount=#{amount}, order_date=#{order_date}, delivery_time=#{delivery_time} WHERE tuid = #{tuid}
     ]]></update>
+
+    <!--订单金额修改-->
+<!--    <update id="updateCommodity" parameterType="Commodity" ><![CDATA[-->
+<!--        UPDATE commodity set  WHERE tuid = #{tuid}-->
+<!--    ]]></update>-->
 
 </mapper>
