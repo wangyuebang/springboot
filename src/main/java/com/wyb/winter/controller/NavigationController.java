@@ -11,8 +11,8 @@ public class NavigationController {
         return "Navigation";
     }
 
-    @RequestMapping("/index")
-    public String test1() {
+    @RequestMapping("/layui")
+    public String layui() {
         return "indexHtml";
     }
 }
