@@ -2,6 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>开始使用layui</title>
     <link rel="stylesheet" href="../static/layui/css/layui.css">
@@ -15,6 +17,7 @@
         <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
         <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
         <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+        <button class="layui-btn layui-btn-sm" lay-event="export">批量导出</button>
     </div>
 </script>
 <script type="text/html" id="barDemo">
@@ -55,7 +58,7 @@
 
 
         //工具栏事件
-        table.on('toolbar(test)', function(obj){
+        table.on('toolbar(userTable)', function(obj){
             var checkStatus = table.checkStatus(obj.config.id);
             switch(obj.event){
                 case 'getCheckData':
@@ -68,6 +71,14 @@
                     break;
                 case 'isAll':
                     layer.msg(checkStatus.isAll ? '全选': '未全选')
+                    break;
+                case 'export':
+                    layer.msg('导出')
+                    table.exportFile(['名字','性别','年龄'], [
+                        ['张三','男','20'],
+                        ['李四','女','18'],
+                        ['王五','女','19']
+                    ], 'csv'); //默认导出 csv，也可以为：xls
                     break;
             };
         });
